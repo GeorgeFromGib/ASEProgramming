@@ -7,14 +7,14 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 {
     public class FunctionCmd : ICommand
     {
-        public void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public void Execute(List<string> paramVals, InterpreterState state)
         {
             var funcName = paramVals[0];
             if (state.FuncStore.ContainsKey(funcName))
                 throw new ApplicationException($"Function '{funcName}' has previously been defined");
             
             var funcParams=paramVals[1].Replace("(", "").Replace(")", "");
-            var funcData = new ProgramInterpreter.FuncData
+            var funcData = new FuncData
             {
                 Address = state.Cursor, 
                 Parameters = funcParams==""?new List<string>():funcParams.Split(',').ToList()

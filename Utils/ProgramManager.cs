@@ -26,7 +26,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
 
         public void LoadProgram()
         {
-            // load from file
+            
         }
         
         public void SaveProgram()

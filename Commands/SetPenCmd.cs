@@ -15,7 +15,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
         }
 
 
-        public override void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public override void Execute(List<string> paramVals, InterpreterState state)
         {
             var col = paramVals[0].Replace("'", "");
             _canvass.SetPen(col);

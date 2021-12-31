@@ -6,6 +6,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using ASEProgrammingLanguageEnvironment.Exceptions;
 using ASEProgrammingLanguageEnvironment.Interpreter;
@@ -64,16 +65,10 @@ namespace ASEProgrammingLanguageEnvironment
             g.DrawImageUnscaled(_outputBitmap, 0, 0); //put the off screen bitmap on the form
         }
 
-
         private void btn_Execute_Click(object sender, EventArgs e)
         {
             CommandEntered("run");
         }
-
-        // private void Program_Text_Changed(object sender, EventArgs e)
-        // {
-        //     var progList=ProgramWindow.Text.Split('\n');
-        //     _app.UpdateProgramList(progList.ToList());
-        // }
+        
     }
 }

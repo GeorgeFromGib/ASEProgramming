@@ -3,14 +3,11 @@ using ASEProgrammingLanguageEnvironment.Interpreter;
 
 namespace ASEProgrammingLanguageEnvironment.Commands
 {
-    public class VarCmd:ICommand
+    public class EndLoopCmd : ICommand
     {
         public void Execute(List<string> paramVals, InterpreterState state)
         {
-            var varName = paramVals[0];
-            var varValue = paramVals[1];
-           
-            state.AddVariable(varName,varValue);
+            state.Cursor = state.LoopAddressStack.Pop()-1;
         }
     }
 }

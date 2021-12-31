@@ -6,8 +6,8 @@ namespace ASETestProject.MocksAndSpys
 {
     public class SpyLetCommand : ICommand
     {
-        public ProgramInterpreter.State State;
-        public void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public InterpreterState State;
+        public void Execute(List<string> paramVals, InterpreterState state)
         {
             var cmd = new LetCommand();
             cmd.Execute(paramVals,state);

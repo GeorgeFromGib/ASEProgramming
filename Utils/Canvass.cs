@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Threading;
 
 namespace ASEProgrammingLanguageEnvironment.Utils
 {
@@ -7,18 +8,19 @@ namespace ASEProgrammingLanguageEnvironment.Utils
     {
         //instance data for pen and x,y position and graphics context
         //graphics context is the drawing area to draw on (week 3)
-        Graphics g;
-        Pen _pen;
-        int xPos, yPos;  //pen position when drawing
-        SolidBrush _brush;
+        readonly Graphics _g;
+        private Pen _pen;
+        private int _xPos, _yPos;  //pen position when drawing
+        private SolidBrush _brush;
         private bool _fill = false;
+        
 
         //constructor initialises canvas to white pen at 0,0
         /// <param name="g">Graphics context of place to draw on</param>
         public Canvass(Graphics g)
         {
-            this.g = g;
-            xPos = yPos = 0;
+            _g = g;
+            _xPos = _yPos = 0;
             _pen = new Pen(Color.Black, 1); //standard pen (should use constant)
             _brush=new SolidBrush(Color.Black);
         }
@@ -27,39 +29,40 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         /// <param name="toY">y position to draw to</param>
         public void DrawLine(int toX, int toY)
         {
-            g.DrawLine(_pen, xPos, yPos, toX, toY); //draw the line
-            xPos = toX;
-            yPos = toY; //update the pen pos as its moved to the end of line 
+            _g.DrawLine(_pen, _xPos, _yPos, toX, toY); //draw the line
+            _xPos = toX;
+            _yPos = toY; //update the pen pos as its moved to the end of line 
         }
         public void DrawRectangle(int width, int height)
         {
-            var rect=new Rectangle(xPos, yPos, width, height);
+            var rect=new Rectangle(_xPos, _yPos, width, height);
             if(_fill)
-                g.FillRectangle(_brush,rect);
+                _g.FillRectangle(_brush,rect);
             else 
-                g.DrawRectangle(_pen,rect); 
+                _g.DrawRectangle(_pen,rect); 
         }
         public void DrawCircle(int radius)
         {
-            var rect = new Rectangle(xPos, yPos, radius,radius);
+            var rect = new Rectangle(_xPos, _yPos, radius,radius);
             if(_fill)
-                g.FillEllipse(_brush,rect);
+                _g.FillEllipse(_brush,rect);
             else
-                g.DrawEllipse(_pen, rect);
+                _g.DrawEllipse(_pen, rect);
+            
         }
 
         public void DrawPolygon(Point[] points)
         {
             if(_fill)
-                g.FillPolygon(_brush,points);
+                _g.FillPolygon(_brush,points);
             else
-                g.DrawPolygon(_pen,points);
+                _g.DrawPolygon(_pen,points);
         }
 
         public void PositionPen(int xPos, int yPos)
         {
-            this.xPos = xPos;
-            this.yPos = yPos;
+            _xPos = xPos;
+            _yPos = yPos;
         }
 
         public void SetPen(string color)
@@ -77,12 +80,13 @@ namespace ASEProgrammingLanguageEnvironment.Utils
 
         public void Clear()
         {
-            g.Clear(Color.Transparent);
+            _g.Clear(Color.Transparent);
         }
 
         public void Reset()
         {
-            xPos = yPos = 0;
+            _xPos = _yPos = 0;
         }
     }
+    
 }

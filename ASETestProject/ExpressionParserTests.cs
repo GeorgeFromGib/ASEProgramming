@@ -7,12 +7,12 @@ namespace ASETestProject
 {
     public class ExpressionParserTests
     {
-        private ProgramInterpreter.State _state;
+        private InterpreterState _state;
 
         [SetUp]
         public void Setup()
         {
-            _state = new ProgramInterpreter.State();
+            _state = new InterpreterState();
             _state.Scope.Push("global");
         }
         

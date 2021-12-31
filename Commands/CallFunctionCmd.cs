@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using ASEProgrammingLanguageEnvironment.Exceptions;
@@ -8,7 +9,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 {
     public class CallFunctionCmd : ICommand
     {
-        public void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public void Execute(List<string> paramVals, InterpreterState state)
         {
             var funcName = paramVals[0];
             if (state.FuncStore.ContainsKey(funcName))
@@ -28,11 +29,11 @@ namespace ASEProgrammingLanguageEnvironment.Commands
             }
             else
             {
-                throw new FunctionNotFoundException($"Function '{funcName}' is not defined");
+                throw new ApplicationException($"Function '{funcName}' is not defined");
             }
         }
 
-        private List<string> GetValues(string funcParamsStr, ProgramInterpreter.State state)
+        private List<string> GetValues(string funcParamsStr, InterpreterState state)
         {
             var values = new List<string>();
             var varReg = Parser.DeTokenise("$VARIABLE$$");

@@ -9,16 +9,16 @@ namespace ASETestProject.MocksAndSpys
         private readonly ICommand _command;
         public List<string> ParameterValues;
         
-        public ProgramInterpreter.State State;
+        public InterpreterState State;
 
         public SpyCommand(ICommand command)
         {
             _command = command;
         }
-        public void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public void Execute(List<string> paramVals, InterpreterState state)
         {
             ParameterValues = paramVals;
-            _command.Execute(paramVals,state);
+            _command?.Execute(paramVals,state);
             State = state;
         }
     }
