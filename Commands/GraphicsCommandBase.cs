@@ -14,7 +14,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
             _canvass = canvass;
         }
         
-        public abstract void Execute(List<string> paramVals, ProgramInterpreter.State state);
+        public abstract void Execute(List<string> paramVals, InterpreterState state);
 
     }
 }

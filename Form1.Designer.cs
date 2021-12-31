@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace ASEProgrammingLanguageEnvironment
 {
     partial class Form1
@@ -59,6 +61,7 @@ namespace ASEProgrammingLanguageEnvironment
             this.ProgramWindow.Size = new System.Drawing.Size(283, 369);
             this.ProgramWindow.TabIndex = 2;
             this.ProgramWindow.Text = "";
+            this.ProgramWindow.Font = new Font("Segoe UI",10);
             //this.ProgramWindow.TextChanged += new System.EventHandler(this.Program_Text_Changed);
             // 
             // label1

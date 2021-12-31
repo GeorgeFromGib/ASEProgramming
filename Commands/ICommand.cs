@@ -7,6 +7,6 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 {
     public interface ICommand
     {
-        void Execute(List<string> paramVals, ProgramInterpreter.State state);
+        void Execute(List<string> paramVals, InterpreterState state);
     }
 }

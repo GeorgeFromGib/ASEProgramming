@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace ASEProgrammingLanguageEnvironment.Utils
@@ -9,10 +11,37 @@ namespace ASEProgrammingLanguageEnvironment.Utils
     public class ProgramContainer
     {
         private readonly RichTextBox _progContainer;
+        private readonly Dictionary<string, Color> _cmdCols= new Dictionary<string, Color>
+        {
+            { "rem", Color.Green },
+            { "var", Color.DarkViolet },
+            { "let", Color.DodgerBlue },
+            { "function", Color.DarkOrange },
+            { "endfunction", Color.DarkOrange },
+            { "while", Color.DarkMagenta },
+            { "endwhile", Color.DarkMagenta },
+            { "if", Color.DarkBlue },
+            { "endif", Color.DarkBlue },
+        };
 
         public ProgramContainer(RichTextBox programContainer)
         {
             _progContainer = programContainer;
+
+        }
+
+        private void ColorCodeCommands()
+        {
+            var program = GetProgramList();
+            for (var i = 0; i < program.Count; i++)
+            {
+                var text = program[i].TrimStart().ToLower();
+                foreach (var keyVal in _cmdCols)
+                {
+                    if(text.StartsWith(keyVal.Key) || text==keyVal.Key)
+                        HighlightLine(i,keyVal.Value);
+                }
+            }
         }
 
         public List<string> GetProgramList()
@@ -30,13 +59,14 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         {
             int pos = _progContainer.SelectionStart;
             SetColorSelection(Color.Black, pos,0,_progContainer.TextLength);
+            ColorCodeCommands();
         }
         
         
-        public void HighlightLine(int lineNo)
+        public void HighlightLine(int lineNo,Color color)
         {
             var tag = GetProgramList()[lineNo];
-            SetLineColor(tag, Color.Red);
+            SetLineColor(tag, color);
         }
         
         private void SetLineColor(string tag, Color color1)
@@ -53,7 +83,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
             _progContainer.SelectionStart = start;
             _progContainer.SelectionLength = length;
             _progContainer.SelectionColor = color1;
-            _progContainer.SelectionStart = curPos;
+            // _progContainer.SelectionStart = curPos;
             _progContainer.SelectionLength = 0;
         }
     }

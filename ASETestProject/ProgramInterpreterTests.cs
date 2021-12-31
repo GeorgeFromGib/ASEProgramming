@@ -11,15 +11,15 @@ namespace ASETestProject
     {
         private SpyLetCommand _cmd;
         private MockCommandFactory _cf;
-        private SpyTriangleCmd _tri;
         private SpyCommand _varSpy;
+        private SpyCommand _spy;
 
         [SetUp]
         public void Setup()
         {
             _cmd = new SpyLetCommand();
             _varSpy = new SpyCommand(new VarCmd());
-            _tri = new SpyTriangleCmd();
+            _spy = new SpyCommand(null);
             _cf = new MockCommandFactory(
                 new Dictionary<string, Lex>
                 {
@@ -28,7 +28,7 @@ namespace ASETestProject
                     {"if", new Lex { CmdRegx = @"if ($EXPRESSION$)", Command = new IfCommand() }},
                     {"endif", new Lex { CmdRegx = @"endif", Command = null }},
                     {"circle", new Lex { CmdRegx = @"circle ($VALUE$)", Command = null }},
-                    {"triangle", new Lex { CmdRegx = @"triangle ($VALUE$),($VALUE$)", Command = _tri }},
+                    {"triangle", new Lex { CmdRegx = @"triangle ($VALUE$),($VALUE$)", Command = _spy }},
                     {"while", new Lex { CmdRegx = @"while ($EXPRESSION$)", Command = new WhileCmd() }},
                     {"endloop", new Lex { CmdRegx = @"endloop", Command = new EndLoopCmd() }},
                     {"function", new Lex { CmdRegx = @"function ($FUNC$)($FUNCPARAM$)", Command = new FunctionCmd() }},
@@ -73,8 +73,8 @@ namespace ASETestProject
                 "triangle 400,200",
             };
             i.Run(program);
-            Assert.AreEqual("400", _tri.parameterValues[0]);
-            Assert.AreEqual("200", _tri.parameterValues[1]);
+            Assert.AreEqual("400", _spy.ParameterValues[0]);
+            Assert.AreEqual("200", _spy.ParameterValues[1]);
         }
 
         [Test]
@@ -94,6 +94,20 @@ namespace ASETestProject
             i.Run(program);
             Assert.AreEqual("5", _cmd.State.GetVariable("a"));
             Assert.AreEqual("1",_cmd.State.GetVariable("x"));
+        }
+        
+        [Test]
+        public void Run_MissingEndIfCommandTest()
+        {
+            var i = new ProgramInterpreter(_cf);
+            var program = new List<string>
+            {
+                "var x = 0",
+                "if x == 3",
+                "\tcircle 10",
+            };
+            var ex = Assert.Throws<ProgramException>(() => i.Run(program));
+            Assert.That(ex.Message.Contains("EndIf command not found for If condition"));
         }
 
         [Test]

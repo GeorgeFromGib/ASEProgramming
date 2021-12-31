@@ -6,7 +6,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 {
     public class LetCommand:ICommand
     {
-        public void Execute(List<string> paramVals,ProgramInterpreter.State state)
+        public void Execute(List<string> paramVals,InterpreterState state)
         {
             var varName = paramVals[0];
             var varValue = paramVals[1];

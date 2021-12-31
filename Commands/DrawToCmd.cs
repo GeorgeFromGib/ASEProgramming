@@ -12,7 +12,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
         {
         }
 
-        public override void Execute(List<string> paramVals, ProgramInterpreter.State state)
+        public override void Execute(List<string> paramVals, InterpreterState state)
         {
             _canvass.DrawLine(paramVals[0].ToInt(), paramVals[1].ToInt());
         }
