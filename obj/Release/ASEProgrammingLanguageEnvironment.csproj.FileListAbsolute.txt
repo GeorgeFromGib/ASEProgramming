@@ -1,0 +1,10 @@
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\bin\Release\ASEProgrammingLanguageEnvironment.exe.config
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\bin\Release\ASEProgrammingLanguageEnvironment.exe
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\bin\Release\ASEProgrammingLanguageEnvironment.pdb
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.csproj.AssemblyReference.cache
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.Form1.resources
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.Properties.Resources.resources
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.csproj.GenerateResource.cache
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.csproj.CoreCompileInputs.cache
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.exe
+C:\Users\georg_000\Source\Repos\ASEProgrammingLanguageEnvironment\obj\Release\ASEProgrammingLanguageEnvironment.pdb

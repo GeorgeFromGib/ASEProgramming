@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASEProgrammingLanguageEnvironment", "ASEProgrammingLanguageEnvironment.csproj", "{D3EF977A-8B56-41E8-A5BE-50C4ECD1FFB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASETestProject", "ASETestProject\ASETestProject.csproj", "{6259F6C7-E076-41EF-BF7F-E17D840F1193}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D3EF977A-8B56-41E8-A5BE-50C4ECD1FFB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3EF977A-8B56-41E8-A5BE-50C4ECD1FFB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3EF977A-8B56-41E8-A5BE-50C4ECD1FFB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6259F6C7-E076-41EF-BF7F-E17D840F1193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6259F6C7-E076-41EF-BF7F-E17D840F1193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6259F6C7-E076-41EF-BF7F-E17D840F1193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6259F6C7-E076-41EF-BF7F-E17D840F1193}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

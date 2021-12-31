@@ -46,14 +46,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Canvass.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Commands\CallFunctionCmd.cs" />
+    <Compile Include="Commands\DrawToCmd.cs" />
+    <Compile Include="Commands\EndFunctionCmd.cs" />
+    <Compile Include="Commands\Fill.cs" />
+    <Compile Include="Commands\FunctionCmd.cs" />
+    <Compile Include="Commands\IfCommand.cs" />
+    <Compile Include="Commands\LetCommand.cs" />
+    <Compile Include="Commands\LoadCmd.cs" />
+    <Compile Include="Commands\PolygonCmd.cs" />
+    <Compile Include="Commands\PositionPenCmd.cs" />
+    <Compile Include="Commands\RectangleCmd.cs" />
+    <Compile Include="Commands\ResetCmd.cs" />
+    <Compile Include="Commands\SetPenCmd.cs" />
+    <Compile Include="Commands\VarCmd.cs" />
+    <Compile Include="Exceptions\FunctionNotFoundException.cs" />
+    <Compile Include="Exceptions\ProgramException.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Interpreter\ProgramInterpreter.cs" />
+    <Compile Include="Utils\Canvass.cs" />
+    <Compile Include="Commands\GraphicsCommandBase.cs" />
+    <Compile Include="Commands\ClearCmd.cs" />
+    <Compile Include="Interpreter\Lex.cs" />
+    <Compile Include="Interpreter\CommandFactory.cs" />
+    <Compile Include="Commands\DrawCircleCmd.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Utils\ProgramContainer.cs" />
+    <Compile Include="Utils\ProgramManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -79,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CourseWork Component 2.md" />
+    <Content Include="house program.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

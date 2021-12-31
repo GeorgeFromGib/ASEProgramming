@@ -1,0 +1,103 @@
+﻿function picketFences(x,y, range, col)
+  pen col
+  var r=0
+  var px=0
+  while r < range
+      let px=x+r
+      moveto px,y
+      rectangle 10,70
+      let r=r+20
+  endloop
+  var ly=y+10
+  moveto x,ly
+  rectangle 150,10
+endfunction
+
+function window(x,y,w,h,col)
+  pen col
+  moveto x,y
+  rectangle w,h
+  var mh=h/2 + y
+  var dx=x+w
+  var mw=w/2 + x
+  var dy=y+h
+  pen 'black'
+  moveto x,mh
+  drawto dx,mh
+  moveto mw,y
+  drawto mw, dy
+endfunction
+
+rem set daytime flag
+var daytime=1
+if daytime == 1
+   var sunCol='orange'
+   var skyCol='lightblue'
+   var grassCol='green'
+   var fenceCol='white'
+   var pathCol='chocolate'
+   var wallCol='cornflowerblue'
+   var roofCol='indianRed'
+   var windowCol='azure'
+   var doorCol='white'
+endif
+if daytime != 1
+   var sunCol='lightyellow'
+   var skyCol='darkblue'
+   var grassCol='darkgreen'
+   var fenceCol='lightgray'
+   var pathCol='brown'
+   var wallCol='blue'
+   var roofCol='darkRed'
+   var windowCol='yellow'
+   var doorCol='lightgray'
+endif
+
+fill 'on'
+reset
+
+rem Sky
+pen skyCol
+rectangle 400,400
+
+rem Sun or Moon
+pen sunCol
+moveto 50,50
+circle 60
+if daytime != 1
+   pen skyCol
+   moveto 70,50
+   circle 60
+endif
+
+rem Grass
+moveto 0,220
+pen grassCol
+rectangle 400,160
+
+rem Path
+pen pathCol
+triangle 95,600,305,600,195,165
+
+
+rem House
+pen wallCol
+moveto 70,150
+rectangle 250,100
+pen roofCol
+triangle 70,150,320,150,195,100
+
+rem Windows
+call window(90,170, 60,40, windowCol)
+call window(240,170, 60,40, windowCol)
+
+rem Door
+pen doorCol
+moveto 175,189
+rectangle 40,60
+
+rem Picket Fences
+call picketFences(0,300,150,fenceCol)
+call picketFences(245,300,150, fenceCol)
+
+(red|blue|green|yellow|black|brown|pink|orange|lightblue)
