@@ -39,6 +39,7 @@ namespace ASEProgrammingLanguageEnvironment
             this.btn_command = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.commandLine = new System.Windows.Forms.TextBox();
+            this.btn_SyntaxHighlight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OutputWindow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,14 +56,14 @@ namespace ASEProgrammingLanguageEnvironment
             // 
             // ProgramWindow
             // 
+            this.ProgramWindow.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ProgramWindow.Location = new System.Drawing.Point(22, 29);
             this.ProgramWindow.Margin = new System.Windows.Forms.Padding(2);
             this.ProgramWindow.Name = "ProgramWindow";
             this.ProgramWindow.Size = new System.Drawing.Size(283, 369);
             this.ProgramWindow.TabIndex = 2;
             this.ProgramWindow.Text = "";
-            this.ProgramWindow.Font = new Font("Segoe UI",10);
-            //this.ProgramWindow.TextChanged += new System.EventHandler(this.Program_Text_Changed);
+            this.ProgramWindow.WordWrap = false;
             // 
             // label1
             // 
@@ -119,11 +120,22 @@ namespace ASEProgrammingLanguageEnvironment
             this.commandLine.TabIndex = 8;
             this.commandLine.KeyDown += new System.Windows.Forms.KeyEventHandler(this.commandLine_KeyDown);
             // 
+            // btn_SyntaxHighlight
+            // 
+            this.btn_SyntaxHighlight.Location = new System.Drawing.Point(311, 29);
+            this.btn_SyntaxHighlight.Name = "btn_SyntaxHighlight";
+            this.btn_SyntaxHighlight.Size = new System.Drawing.Size(61, 40);
+            this.btn_SyntaxHighlight.TabIndex = 9;
+            this.btn_SyntaxHighlight.Text = "Highlight Syntax";
+            this.btn_SyntaxHighlight.UseVisualStyleBackColor = true;
+            this.btn_SyntaxHighlight.Click += new System.EventHandler(this.btn_SyntaxHighlight_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 488);
+            this.Controls.Add(this.btn_SyntaxHighlight);
             this.Controls.Add(this.commandLine);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btn_command);
@@ -153,6 +165,7 @@ namespace ASEProgrammingLanguageEnvironment
         private System.Windows.Forms.Button btn_command;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox commandLine;
+        private System.Windows.Forms.Button btn_SyntaxHighlight;
     }
 }
 

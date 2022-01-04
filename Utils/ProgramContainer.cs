@@ -18,8 +18,9 @@ namespace ASEProgrammingLanguageEnvironment.Utils
             { "let", Color.DodgerBlue },
             { "function", Color.DarkOrange },
             { "endfunction", Color.DarkOrange },
+            { "call", Color.DarkOrange },
             { "while", Color.DarkMagenta },
-            { "endwhile", Color.DarkMagenta },
+            { "endloop", Color.DarkMagenta },
             { "if", Color.DarkBlue },
             { "endif", Color.DarkBlue },
         };
@@ -27,19 +28,21 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         public ProgramContainer(RichTextBox programContainer)
         {
             _progContainer = programContainer;
-
         }
 
         private void ColorCodeCommands()
         {
-            var program = GetProgramList();
-            for (var i = 0; i < program.Count; i++)
+            var program = _progContainer.Lines;
+            for (var i = 0; i < program.Length; i++)
             {
                 var text = program[i].TrimStart().ToLower();
                 foreach (var keyVal in _cmdCols)
                 {
-                    if(text.StartsWith(keyVal.Key) || text==keyVal.Key)
-                        HighlightLine(i,keyVal.Value);
+                    if (!string.IsNullOrEmpty(text) && (text.StartsWith(keyVal.Key) || text == keyVal.Key))
+                    {
+                        HighlightLine(i, keyVal.Value);
+                        break;
+                    }
                 }
             }
         }
@@ -58,32 +61,23 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         public void ResetColors()
         {
             int pos = _progContainer.SelectionStart;
-            SetColorSelection(Color.Black, pos,0,_progContainer.TextLength);
+            SetSelectionColor(Color.Black, pos,0,_progContainer.TextLength);
             ColorCodeCommands();
         }
         
-        
         public void HighlightLine(int lineNo,Color color)
         {
-            var tag = GetProgramList()[lineNo];
-            SetLineColor(tag, color);
+            var text = _progContainer.Lines[lineNo];
+            _progContainer.Select(_progContainer.GetFirstCharIndexFromLine(lineNo), text.Length);
+            _progContainer.SelectionColor = color;
         }
         
-        private void SetLineColor(string tag, Color color1)
-        {
-            int pos = _progContainer.SelectionStart;
-            string s = _progContainer.Text;
-            int jx = s.IndexOf(tag, StringComparison.CurrentCultureIgnoreCase);
-            if (jx < 0) return;
-            SetColorSelection(color1, pos, jx, tag.Length);
-        }
-
-        private void SetColorSelection(Color color1,int curPos, int start, int length)
+        private void SetSelectionColor(Color color1,int curPos, int start, int length)
         {
             _progContainer.SelectionStart = start;
             _progContainer.SelectionLength = length;
             _progContainer.SelectionColor = color1;
-            // _progContainer.SelectionStart = curPos;
+            _progContainer.SelectionStart = curPos;
             _progContainer.SelectionLength = 0;
         }
     }

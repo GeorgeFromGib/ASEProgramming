@@ -69,6 +69,10 @@ namespace ASEProgrammingLanguageEnvironment
         {
             CommandEntered("run");
         }
-        
+
+        private void btn_SyntaxHighlight_Click(object sender, EventArgs e)
+        {
+            _progContainer.ResetColors();
+        }
     }
 }
