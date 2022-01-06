@@ -16,10 +16,9 @@ namespace ASEProgrammingLanguageEnvironment
         
         private readonly ProgramInterpreter _interpreter;
 
-        public ASEApplication(Bitmap outputBitmap,ProgramContainer container)
+        public ASEApplication( Canvass canvass,ProgramContainer container)
         {
-            _myCanvass = new Canvass(
-                Graphics.FromImage(outputBitmap)); //to handle the drawing, pass the drawing surface to it
+            _myCanvass = canvass;
             _progManager = new ProgramListManager(container);
             _commandList = new CommandFactory(_myCanvass, _progManager);
             _interpreter = new ProgramInterpreter(_commandList);
@@ -30,6 +29,7 @@ namespace ASEProgrammingLanguageEnvironment
             {
                 case "run":
                     _interpreter.Reset();
+                    _myCanvass.Reset();
                     _interpreter.Run(_progManager.Program);
                     break;
                 default:

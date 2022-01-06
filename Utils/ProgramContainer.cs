@@ -38,11 +38,10 @@ namespace ASEProgrammingLanguageEnvironment.Utils
                 var text = program[i].TrimStart().ToLower();
                 foreach (var keyVal in _cmdCols)
                 {
-                    if (!string.IsNullOrEmpty(text) && (text.StartsWith(keyVal.Key) || text == keyVal.Key))
-                    {
-                        HighlightLine(i, keyVal.Value);
-                        break;
-                    }
+                    if (string.IsNullOrEmpty(text) || (!text.StartsWith(keyVal.Key) && text != keyVal.Key)) 
+                        continue;
+                    HighlightLine(i, keyVal.Value);
+                    break;
                 }
             }
         }

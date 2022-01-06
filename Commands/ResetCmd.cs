@@ -14,7 +14,7 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 
         public override void Execute(List<string> paramVals, InterpreterState state)
         {
-            _canvass.Reset();
+            _canvass.ResetPos();
         }
     }
 }
