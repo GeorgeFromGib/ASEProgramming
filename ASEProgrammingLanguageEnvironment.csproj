@@ -68,6 +68,7 @@
     <Compile Include="Interpreter\Parser.cs" />
     <Compile Include="Interpreter\ProgramInterpreter.cs" />
     <Compile Include="Interpreter\FuncData.cs" />
+    <Compile Include="Utils\ASEColor.cs" />
     <Compile Include="Utils\Canvass.cs" />
     <Compile Include="Commands\GraphicsCommandBase.cs" />
     <Compile Include="Commands\ClearCmd.cs" />
