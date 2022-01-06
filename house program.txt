@@ -28,6 +28,16 @@ function window(x,y,w,h,col)
   drawto mw, dy
 endfunction
 
+function beacon(x,y,w,h,flashcol,postcol)
+  pen flashcol
+  moveto x,y
+  rectangle w,10
+  pen postcol
+  var py=y+10
+  moveto x,py
+  rectangle 10,100
+endfunction
+
 rem set daytime flag
 var daytime=1
 if daytime == 1
@@ -99,5 +109,9 @@ rectangle 40,60
 rem Picket Fences
 call picketFences(0,300,150,fenceCol)
 call picketFences(245,300,150, fenceCol)
+
+rem Beacons
+call beacon(140,230,10,100,'redgreen',fenceCol)
+call beacon(245,230,10,100,'blueyellow',fenceCol)
 
 (red|blue|green|yellow|black|brown|pink|orange|lightblue)

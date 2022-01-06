@@ -6,6 +6,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using ASEProgrammingLanguageEnvironment.Exceptions;
@@ -17,14 +18,22 @@ namespace ASEProgrammingLanguageEnvironment
     public partial class Form1 : Form
     {
         private readonly ASEApplication _app;
-        private readonly Bitmap _outputBitmap = new Bitmap(640, 480);
         private readonly ProgramContainer _progContainer;
+        private readonly Bitmap _outputBitmap = new Bitmap(640, 480);
+
 
         public Form1()
         {
             InitializeComponent();
             _progContainer = new ProgramContainer(ProgramWindow);
-            _app = new ASEApplication(_outputBitmap, _progContainer);
+            var canvass = new Canvass(Graphics.FromImage(_outputBitmap));
+            canvass.DrawingUpdated += DrawingUpdated;
+            _app = new ASEApplication(canvass, _progContainer);
+        }
+
+        private void DrawingUpdated(object sender, EventArgs e)
+        {
+            Refresh();
         }
 
         private void commandLine_KeyDown(object sender, KeyEventArgs e)
