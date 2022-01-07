@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using ASEProgrammingLanguageEnvironment.Exceptions;
 using ASEProgrammingLanguageEnvironment.Interpreter;
 using ASEProgrammingLanguageEnvironment.Utils;
+using ASEProgrammingLanguageEnvironment.Utils.Drawing;
 
 namespace ASEProgrammingLanguageEnvironment
 {

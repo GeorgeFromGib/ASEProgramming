@@ -32,7 +32,10 @@ Flash colors using threads (half second alternate)
 - redgreen
 - blueyellow
 - blackwhite
-To be done
+
+Implemented by new AESColor class which will alternate the colors each time the color is requested on those instances where a flashing color is specified in the constructor
+
+The Canvas class implements a timed thread which runs every 500 milliseconds and executes all stored rendering commands stored in its _drawActions buffer. Some of these commends request the colour for the pen or brush from the AES Color instance stored within the recorded action and thus flashing colours are achieved. 
 ## Design & implementation
 ### Design Patterns - factory class
 Implemented via the CommandFactory class

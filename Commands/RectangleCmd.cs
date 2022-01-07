@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using ASEProgrammingLanguageEnvironment.Extensions;
 using ASEProgrammingLanguageEnvironment.Interpreter;
 using ASEProgrammingLanguageEnvironment.Utils;
+using ASEProgrammingLanguageEnvironment.Utils.Drawing;
 
 namespace ASEProgrammingLanguageEnvironment.Commands
 {

@@ -16,30 +16,34 @@ namespace ASEProgrammingLanguageEnvironment.Commands
             var endFunctionAddress = FindEndfunctionAddress(state, funcName);
             var funcData = new FuncData
             {
-                Address = state.Cursor, 
+                Address = state.Cursor,
                 Parameters = AddAnyFunctionParameterDefinitions(paramVals)
             };
             state.FuncStore.Add(funcName, funcData);
             state.Cursor = endFunctionAddress;
-
         }
 
         private int FindEndfunctionAddress(InterpreterState state, string funcName)
         {
-            for (var i = state.Cursor; i < state.Program.Count; i++)
+            for (var i = state.Cursor+1; i < state.Program.Count; i++)
             {
-                if (state.Program[i].ToLower().Trim() == "endfunction")
+                switch (Parser.ExtractKeyword(state.Program[i]))
                 {
-                    return i;
+                    case "function":
+                        throw new ApplicationException(
+                            "Function definitions can not have other nested function definitions");
+                    case "endfunction":
+                        return i;
                 }
             }
+
             throw new ApplicationException($"EndFunction command not found for function '{funcName}'");
         }
 
         private static List<string> AddAnyFunctionParameterDefinitions(List<string> paramVals)
         {
             var funcParams = RemoveBrackets(paramVals);
-            return funcParams==""?new List<string>():funcParams.Split(',').ToList();
+            return funcParams == "" ? new List<string>() : funcParams.Split(',').ToList();
         }
 
         private static string RemoveBrackets(List<string> paramVals)

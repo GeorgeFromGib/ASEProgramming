@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ASEProgrammingLanguageEnvironment.Commands;
 using ASEProgrammingLanguageEnvironment.Utils;
+using ASEProgrammingLanguageEnvironment.Utils.Drawing;
 
 namespace ASEProgrammingLanguageEnvironment.Interpreter
 {
