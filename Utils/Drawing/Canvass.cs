@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Windows.Forms;
 using Timer = System.Threading.Timer;
 
-namespace ASEProgrammingLanguageEnvironment.Utils
+namespace ASEProgrammingLanguageEnvironment.Utils.Drawing
 {
     //Canvass class holds info that is displayed on the form in response to simple programming language (SPL) commands
     public class Canvass
@@ -15,10 +11,8 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         //instance data for pen and x,y position and graphics context
         //graphics context is the drawing area to draw on (week 3)
         readonly Graphics _g;
-        private Pen _pen;
         private int _xPos, _yPos; //pen position when drawing
-        private SolidBrush _brush;
-        private bool _fill = false;
+        private bool _fill;
         private Timer _timer;
         private List<Action> _drawActions;
         private string _penColStr;
@@ -44,9 +38,9 @@ namespace ASEProgrammingLanguageEnvironment.Utils
                 drawAction.Invoke();
             }
 
-            OnDrawingUpdated();
+            DrawingUpdated?.Invoke(this, EventArgs.Empty);
         }
-
+        
         public void SetPenColor(string color)
         {
             _penColStr = color;
@@ -132,8 +126,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
             });
           
         }
-
-
+        
         public void ClearDrawingArea()
         {
             _g.Clear(Color.Transparent);
@@ -150,14 +143,9 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         public void Reset()
         {
             _xPos = _yPos = 0;
-            _pen = new Pen(Color.Black, 1); //standard pen (should use constant)
-            _brush = new SolidBrush(Color.Black);
+            _penColStr = "black";
             _drawActions = new List<Action>();
         }
-
-        protected virtual void OnDrawingUpdated()
-        {
-            DrawingUpdated?.Invoke(this, EventArgs.Empty);
-        }
+        
     }
 }

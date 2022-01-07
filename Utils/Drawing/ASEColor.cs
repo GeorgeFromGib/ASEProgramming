@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace ASEProgrammingLanguageEnvironment.Utils
+namespace ASEProgrammingLanguageEnvironment.Utils.Drawing
 {
     public class ASEColor
     {
@@ -10,7 +10,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         private readonly string _colorName;
         private int _colSwitch=0;
 
-        private Dictionary<string, Color[]> _flashcolors = new Dictionary<string, Color[]>
+        private readonly Dictionary<string, Color[]> _flashColors = new Dictionary<string, Color[]>
         {
             { "redgreen", new[]{Color.Red, Color.Green} },
             { "blueyellow", new[]{Color.Blue, Color.Yellow} },
@@ -20,7 +20,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
         public ASEColor(string color)
         {
             _colorName = color;
-            if (_flashcolors.ContainsKey(color))
+            if (_flashColors.ContainsKey(color))
             {
                 _flashing = true;
                 return;
@@ -38,7 +38,7 @@ namespace ASEProgrammingLanguageEnvironment.Utils
                     return Color.FromName(_colorName);
                 
                 _colSwitch = 1-_colSwitch;
-                return _flashcolors[_colorName][_colSwitch];
+                return _flashColors[_colorName][_colSwitch];
             }
         }
     }

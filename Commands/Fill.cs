@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using ASEProgrammingLanguageEnvironment.Interpreter;
 using ASEProgrammingLanguageEnvironment.Utils;
+using ASEProgrammingLanguageEnvironment.Utils.Drawing;
 
 namespace ASEProgrammingLanguageEnvironment.Commands
 {

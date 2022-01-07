@@ -68,8 +68,6 @@
     <Compile Include="Interpreter\Parser.cs" />
     <Compile Include="Interpreter\ProgramInterpreter.cs" />
     <Compile Include="Interpreter\FuncData.cs" />
-    <Compile Include="Utils\ASEColor.cs" />
-    <Compile Include="Utils\Canvass.cs" />
     <Compile Include="Commands\GraphicsCommandBase.cs" />
     <Compile Include="Commands\ClearCmd.cs" />
     <Compile Include="Interpreter\Lex.cs" />
@@ -83,6 +81,8 @@
     </Compile>
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Utils\Drawing\ASEColor.cs" />
+    <Compile Include="Utils\Drawing\Canvass.cs" />
     <Compile Include="Utils\ProgramContainer.cs" />
     <Compile Include="Utils\ProgramManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

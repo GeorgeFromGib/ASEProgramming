@@ -18,11 +18,14 @@ namespace ASEProgrammingLanguageEnvironment.Commands
 
         private int FindEndIfAddress(InterpreterState state)
         {
-            for (int i = state.Cursor; i < state.Program.Count; i++)
+            for (var i = state.Cursor+1; i < state.Program.Count; i++)
             {
-                if (state.Program[i].ToLower().Trim() == "endif")
+                switch (Parser.ExtractKeyword(state.Program[i]))
                 {
-                    return i;
+                    case "if":
+                        throw new ApplicationException("If commands can not have other nested If statements");
+                    case "endif":
+                        return i;
                 }
             }
             throw new ApplicationException($"EndIf command not found for If condition");

@@ -21,11 +21,14 @@ namespace ASEProgrammingLanguageEnvironment.Commands
         
         private int FindEndLoopAddress(InterpreterState state)
         {
-            for (int i = state.Cursor; i < state.Program.Count; i++)
+            for (var i = state.Cursor+1; i < state.Program.Count; i++)
             {
-                if (state.Program[i].ToLower().Trim() == "endloop")
+                switch (Parser.ExtractKeyword(state.Program[i]))
                 {
-                    return i;
+                    case "while":
+                        throw new ApplicationException("While statements can not have other nested while statements");
+                    case "endloop"  :
+                        return i;
                 }
             }
             throw new ApplicationException($"EndLoop command not found for while loop");

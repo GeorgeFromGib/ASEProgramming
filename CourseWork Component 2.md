@@ -32,7 +32,10 @@ Flash colors using threads (half second alternate)
 - redgreen
 - blueyellow
 - blackwhite
-To be done
+
+Implemented by new AESColor class which will alternate the colors each time the color is requested on those instances where a flashing color is specified in the constructor
+
+The Canvas class implements a timed thread which runs every 500 milliseconds and executes all stored rendering commands stored in its _drawActions buffer. Some of these commends request the colour for the pen or brush from the AES Color instance stored within the recorded action and thus flashing colours are achieved. 
 ## Design & implementation
 ### Design Patterns - factory class
 Implemented via the CommandFactory class
@@ -81,6 +84,16 @@ Polygon and triangle shapes Implemented by PolygonCmd and TriangleCmd respective
         drawto dx,mh
         moveto mw,y
         drawto mw, dy
+    endfunction
+    
+    function beacon(x,y,w,h,flashcol,postcol)
+        pen flashcol
+        moveto x,y
+        rectangle w,10
+        pen postcol
+        var py=y+10
+        moveto x,py
+        rectangle 10,100
     endfunction
     
     rem set daytime flag
@@ -154,3 +167,7 @@ Polygon and triangle shapes Implemented by PolygonCmd and TriangleCmd respective
     rem Picket Fences
     call picketFences(0,300,150,fenceCol)
     call picketFences(245,300,150, fenceCol)
+    
+    rem Beacons
+    call beacon(140,230,10,100,'redgreen',fenceCol)
+    call beacon(245,230,10,100,'blueyellow',fenceCol)
